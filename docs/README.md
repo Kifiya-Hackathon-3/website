@@ -20,6 +20,7 @@ The public **download** experience for the app lives beside this docs app: open 
 ## Quick links
 
 - [Getting started](getting-started.md) — environment, clone, run
+- [Technical stack](tech-stack.md) — Go, sqlc, migrate, Air, React, Flutter
 - [Features](features.md) — actors, capabilities, and HTTP surface (Ahadu API)
 - [Architecture & flows](architecture-and-flows.md) — C4 views and sequence diagrams
 - [Endpoint reference](endpoints-from-architecture.md) — routes, auth, request/response shapes
