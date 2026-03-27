@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#02404F" />
+  <meta name="description" content="Developer documentation for the Kifiya digital identity wallet." />
+  <title>Documentation — Kifiya</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600&family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="docsify-theme.css" />
+</head>
+<body class="page page--docs">
+  <header class="docs-site-header" role="banner">
+    <div class="docs-site-header__inner">
+      <a class="docs-site-header__home" href="index.html">
+        <svg class="docs-site-header__home-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M19 12H5M12 19l-7-7 7-7"
+          />
+        </svg>
+        Return to home
+      </a>
+      <span class="docs-site-header__title">Developer documentation</span>
+    </div>
+  </header>
+  <div id="app"></div>
+
+  <footer class="footer">
+    <p class="footer__line">
+      © <span id="y-docs"></span> Kifiya · Hackathon 3.0
+    </p>
+    <p class="footer__line footer__line--links">
+      <a
+        class="footer__link footer__link--github"
+        href="https://github.com/Kifiya-Hackathon-3"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg class="footer__github-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+          <path
+            fill="currentColor"
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+          />
+        </svg>
+        Kifiya Hackathon 3 on GitHub
+      </a>
+    </p>
+  </footer>
+
+  <script>
+    document.getElementById("y-docs").textContent = new Date().getFullYear();
+    window.$docsify = {
+      name: "Developer documentation",
+      nameLink: "#/",
+      themeColor: "#02404f",
+      repo: "https://github.com/Kifiya-Hackathon-3",
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      routerMode: "hash",
+      basePath: "docs/",
+      homepage: "README.md",
+      notFoundPage: true,
+      search: {
+        maxAge: 86400000,
+        paths: "auto",
+        placeholder: "Search docs",
+        noData: "No results",
+        depth: 3,
+      },
+      /* Only options passed to mermaid.run(); theme etc. go in mermaid.initialize() below */
+      mermaidConfig: {
+        querySelector: ".mermaid",
+        suppressErrors: true,
+      },
+    };
+  </script>
+  <!-- Mermaid + plugin MUST register before docsify.min.js reads $docsify.plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    if (typeof mermaid !== "undefined") {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "neutral",
+        securityLevel: "loose",
+        fontFamily: "inherit",
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2/dist/docsify-mermaid.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+</body>
+</html>

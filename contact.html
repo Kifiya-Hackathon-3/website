@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#02404F" />
-  <meta name="description" content="Download the Kifiya digital identity wallet app." />
-  <title>Download the app — Kifiya</title>
+  <meta name="description" content="Contact the Kifiya digital identity wallet team." />
+  <title>Contact — Kifiya</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,10 +42,10 @@
         </button>
         <nav class="header__nav" id="site-main-nav" aria-label="Main">
           <ul class="header__nav-list">
-            <li><a class="header__link" href="./" aria-current="page">Home</a></li>
+            <li><a class="header__link" href="./">Home</a></li>
             <li><a class="header__link" href="docs.html">Docs</a></li>
             <li><a class="header__link" href="about.html">About</a></li>
-            <li><a class="header__link" href="contact.html">Contact</a></li>
+            <li><a class="header__link" href="contact.html" aria-current="page">Contact</a></li>
             <li>
               <a
                 class="header__link header__link--github"
@@ -68,75 +68,23 @@
     </header>
 
     <main class="main">
-      <section class="hero" aria-labelledby="hero-heading">
-        <p class="eyebrow">Your data, your control</p>
-        <h1 id="hero-heading" class="hero__title">Get the wallet on your phone</h1>
-        <p class="hero__lede">
-          Prove who you are, store credentials safely, and share only what each service needs—with privacy and control built in.
-        </p>
-
-        <div class="device-showcase">
-          <div class="phone" aria-hidden="true">
-            <div class="phone__bezel">
-              <div class="phone__notch"></div>
-              <div class="phone__screen">
-                <div class="app-ui">
-                  <div class="app-ui__status">
-                    <span>9:41</span>
-                    <span class="app-ui__icons">●●●</span>
-                  </div>
-                  <div class="app-ui__header">
-                    <span class="app-ui__greeting">Digital Identity Wallet</span>
-                  </div>
-                  <div class="app-ui__card app-ui__card--id">
-                    <span class="app-ui__chip"></span>
-                    <div class="app-ui__card-text">
-                      <span class="app-ui__label">Ahadu ID</span>
-                      <span class="app-ui__sub">Ready to use</span>
-                    </div>
-                  </div>
-                  <div class="app-ui__row">
-                    <div class="app-ui__tile"></div>
-                    <div class="app-ui__tile"></div>
-                  </div>
-                  <div class="app-ui__doc">
-                    <span class="app-ui__doc-icon"></span>
-                    <span>Documents</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <article class="content-page">
+        <p class="eyebrow">Get in touch</p>
+        <h1 class="hero__title">Contact</h1>
+        <div class="prose">
+          <p>
+            Questions about the wallet, the hackathon, or contributing? We welcome issues and discussions on GitHub—that is the best place to reach the team.
+          </p>
         </div>
-
-        <div class="download-block">
-          <div class="download-wrap">
-            <a class="download-btn" href="#" rel="noopener">
-              <span class="download-btn__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-              </span>
-              Download the app
-            </a>
+        <dl class="contact-card">
+          <div class="contact-card__row">
+            <dt class="contact-card__label">GitHub organization</dt>
+            <dd class="contact-card__value">
+              <a href="https://github.com/Kifiya-Hackathon-3" target="_blank" rel="noopener noreferrer">github.com/Kifiya-Hackathon-3</a>
+            </dd>
           </div>
-          <div class="qr-get-app" aria-labelledby="qr-get-app-heading">
-            <p id="qr-get-app-heading" class="qr-get-app__label">Scan to get the app</p>
-            <div class="qr-get-app__frame">
-              <img
-                class="qr-get-app__img"
-                src="qr-code.png"
-                width="200"
-                height="200"
-                alt="QR code: scan with your phone to get the Kifiya wallet app"
-                decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+        </dl>
+      </article>
     </main>
 
     <footer class="footer">

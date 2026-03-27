@@ -1,0 +1,561 @@
+/* Docsify layout + Kifiya — professional doc shell */
+
+.page--docs {
+  --theme-color: var(--kifiya-primary);
+  /* Matches .docs-site-header total block height (bar + safe area) */
+  --docs-header-h: calc(52px + env(safe-area-inset-top, 0px));
+  --docs-sidebar-w: 300px;
+}
+
+/* Sticky peacock bar above Docsify — fills space reserved for --docs-header-h */
+.docs-site-header {
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: linear-gradient(
+    165deg,
+    var(--kifiya-primary) 0%,
+    var(--kifiya-primary-dark) 100%
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.docs-site-header__inner {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  min-height: calc(52px + env(safe-area-inset-top, 0px));
+  padding: 10px 16px;
+  padding-top: max(10px, env(safe-area-inset-top, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.docs-site-header__home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin: -6px -8px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.docs-site-header__home:hover {
+  color: var(--kifiya-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.docs-site-header__home:focus-visible {
+  outline: 2px solid var(--kifiya-secondary);
+  outline-offset: 2px;
+}
+
+.docs-site-header__home-icon {
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.docs-site-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--kifiya-white);
+  text-align: right;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 420px) {
+  /* Stacked title + link needs more vertical space than single row */
+  .page--docs {
+    --docs-header-h: calc(96px + env(safe-area-inset-top, 0px));
+  }
+
+  .docs-site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: calc(96px + env(safe-area-inset-top, 0px));
+  }
+
+  .docs-site-header__title {
+    text-align: left;
+    width: 100%;
+  }
+}
+
+/* Kill Docsify “loading” giant centered state once mounted */
+.page--docs div#app {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: left;
+}
+
+.page--docs #app:empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.page--docs #app:empty::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid rgba(2, 64, 79, 0.2);
+  border-top-color: var(--kifiya-primary);
+  border-radius: 50%;
+  animation: docsify-spin 0.7s linear infinite;
+}
+
+@keyframes docsify-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page--docs #app {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    165deg,
+    #e8ecee 0%,
+    var(--kifiya-light) 42%,
+    #eef1f3 100%
+  );
+}
+
+.page--docs #app > main {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100dvh - var(--docs-header-h) - 120px);
+  height: auto;
+  z-index: 0;
+}
+
+/* Reading progress under site header */
+.page--docs .progress {
+  top: var(--docs-header-h);
+  z-index: 15;
+  height: 3px;
+  background-color: var(--kifiya-secondary);
+}
+
+/* —— Sidebar — brand.kifiya.com “on peacock green”: #02404F, secondary #EB7D23 —— */
+.page--docs .sidebar {
+  top: var(--docs-header-h);
+  height: calc(100dvh - var(--docs-header-h));
+  width: var(--docs-sidebar-w);
+  padding: 1.25rem 0 3rem;
+  background: linear-gradient(
+    165deg,
+    var(--kifiya-primary) 0%,
+    var(--kifiya-primary-dark) 55%,
+    #011f28 100%
+  );
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 6px 0 36px -8px rgba(2, 64, 79, 0.45);
+  color: rgba(255, 255, 255, 0.92);
+  z-index: 12;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.page--docs .sidebar > h1 {
+  margin: 0 1.25rem 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--kifiya-white);
+}
+
+.page--docs .sidebar > h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page--docs .sidebar > h1 a:hover {
+  color: var(--kifiya-white);
+}
+
+.page--docs .sidebar .sidebar-nav {
+  padding: 0 0.75rem 2.5rem;
+  line-height: 1.5;
+}
+
+.page--docs .sidebar ul {
+  margin: 0;
+  padding: 0;
+}
+
+.page--docs .sidebar ul ul {
+  margin-top: 0.25rem;
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.page--docs .sidebar li {
+  margin: 2px 0;
+}
+
+.page--docs .sidebar ul li a {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  white-space: normal;
+  text-overflow: unset;
+  line-height: 1.35;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.page--docs .sidebar ul li a:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--kifiya-white);
+}
+
+.page--docs .sidebar ul li.active > a {
+  border-right: none;
+  border-left: 3px solid var(--kifiya-secondary);
+  margin-left: -1px;
+  padding-left: calc(0.65rem - 2px);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--kifiya-white);
+  font-weight: 600;
+}
+
+.page--docs .search {
+  margin: 0 1rem 1.25rem;
+  border-bottom: none;
+}
+
+.page--docs .search .input-wrap {
+  position: relative;
+}
+
+.page--docs .search input[type="search"],
+.page--docs .search input.search,
+.page--docs .sidebar .search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.85rem 0.65rem 2.35rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--kifiya-white);
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23ffffff' stroke-opacity='0.5' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 3 3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.7rem 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.page--docs .search input[type="search"]::placeholder,
+.page--docs .search input.search::placeholder,
+.page--docs .sidebar .search input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.page--docs .search input:focus {
+  border-color: var(--kifiya-secondary);
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 3px rgba(235, 125, 35, 0.28);
+}
+
+.page--docs .search .search-keyword {
+  color: var(--kifiya-secondary);
+  font-weight: 700;
+}
+
+.page--docs .search .results-panel {
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(2, 64, 79, 0.12);
+  box-shadow: 0 12px 40px -12px rgba(10, 26, 31, 0.25);
+  background: var(--kifiya-light);
+  overflow: hidden;
+}
+
+.page--docs .search .matching-post {
+  border-color: rgba(2, 64, 79, 0.08);
+}
+
+.page--docs .search .matching-post a {
+  color: var(--kifiya-primary);
+}
+
+.page--docs .search .matching-post a:hover {
+  color: var(--kifiya-primary-dark);
+}
+
+.page--docs .search .clear-button {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* —— Main content —— */
+.page--docs .content {
+  left: var(--docs-sidebar-w);
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  background: transparent;
+}
+
+.page--docs .markdown-section {
+  max-width: 48rem;
+  margin: 0 auto 2.5rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.25rem, 3vw, 2.5rem);
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(2, 64, 79, 0.07);
+  box-shadow:
+    0 1px 2px rgba(10, 26, 31, 0.04),
+    0 24px 48px -20px rgba(2, 64, 79, 0.14);
+}
+
+.page--docs .markdown-section h1,
+.page--docs .markdown-section h2,
+.page--docs .markdown-section h3,
+.page--docs .markdown-section h4,
+.page--docs .markdown-section strong {
+  color: var(--kifiya-dark);
+  font-weight: 700;
+}
+
+.page--docs .markdown-section h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(2, 64, 79, 0.1);
+}
+
+.page--docs .markdown-section h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin: 2.25rem 0 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(2, 64, 79, 0.06);
+}
+
+.page--docs .markdown-section h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.page--docs .markdown-section h3 {
+  font-size: 1.125rem;
+  margin: 1.75rem 0 0.5rem;
+  color: var(--kifiya-primary);
+}
+
+.page--docs .markdown-section p,
+.page--docs .markdown-section li {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.page--docs .markdown-section a {
+  color: var(--kifiya-primary);
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.page--docs .markdown-section a:hover {
+  text-decoration: underline;
+  color: var(--kifiya-primary-dark);
+}
+
+.page--docs .anchor span {
+  color: var(--kifiya-dark);
+}
+
+.page--docs .markdown-section hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(2, 64, 79, 0.15) 15%,
+    rgba(2, 64, 79, 0.15) 85%,
+    transparent
+  );
+  margin: 2.5rem 0;
+}
+
+.page--docs .markdown-section blockquote {
+  border-left: 4px solid var(--kifiya-secondary);
+  background: rgba(235, 125, 35, 0.06);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+}
+
+.page--docs .markdown-section blockquote p {
+  margin: 0.35em 0;
+}
+
+/* Match Docsify pattern: horizontal scroll for wide tables */
+.page--docs .markdown-section table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  font-size: 0.9375rem;
+  border: 1px solid rgba(2, 64, 79, 0.1);
+  border-radius: 10px;
+}
+
+.page--docs .markdown-section thead {
+  background: rgba(2, 64, 79, 0.06);
+}
+
+.page--docs .markdown-section th {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--kifiya-dark);
+  border-color: rgba(2, 64, 79, 0.1);
+}
+
+.page--docs .markdown-section td {
+  border-color: rgba(2, 64, 79, 0.08);
+}
+
+.page--docs .markdown-section tr:nth-child(2n) {
+  background: rgba(243, 245, 246, 0.65);
+}
+
+/* Code */
+.page--docs .markdown-section code,
+.page--docs .markdown-section pre,
+.page--docs .markdown-section output {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, monospace;
+}
+
+.page--docs .markdown-section :not(pre) > code {
+  background: rgba(2, 64, 79, 0.08);
+  color: var(--kifiya-primary-dark);
+  border-radius: 6px;
+  padding: 0.15em 0.45em;
+  font-size: 0.84em;
+  font-weight: 600;
+}
+
+.page--docs .markdown-section pre {
+  padding: 0;
+  margin: 1.35rem 0;
+  border-radius: 10px;
+  border: 1px solid rgba(2, 64, 79, 0.15);
+  border-left: 4px solid var(--kifiya-secondary);
+  background: var(--kifiya-dark) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.page--docs .markdown-section pre > code {
+  padding: 1.15rem 1.25rem !important;
+  color: #e8eef1 !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.55 !important;
+  background: transparent !important;
+}
+
+.page--docs .markdown-section p.tip {
+  border-left-color: var(--kifiya-secondary);
+  background: rgba(235, 125, 35, 0.08);
+  border-radius: 0 10px 10px 0;
+}
+
+.page--docs .markdown-section p.warn {
+  background: rgba(2, 64, 79, 0.08);
+  border-left: 4px solid var(--kifiya-primary);
+  border-radius: 10px;
+}
+
+/* Mobile toggle */
+.page--docs .github-corner {
+  display: none;
+}
+
+.page--docs .sidebar-toggle {
+  top: calc(var(--docs-header-h) + 10px);
+  bottom: auto;
+  left: 12px;
+  width: auto;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(2, 64, 79, 0.12);
+  box-shadow: 0 4px 16px rgba(10, 26, 31, 0.08);
+  z-index: 25;
+}
+
+.page--docs .sidebar-toggle span {
+  background-color: var(--kifiya-primary);
+}
+
+/* Docsify pins sidebar when scrolling; keep it below site header */
+body.page--docs.sticky .sidebar {
+  top: var(--docs-header-h);
+  height: calc(100dvh - var(--docs-header-h));
+}
+
+@media screen and (max-width: 768px) {
+  .page--docs .sidebar {
+    top: var(--docs-header-h);
+    height: calc(100dvh - var(--docs-header-h));
+    padding-top: 3.25rem;
+  }
+
+  .page--docs .content {
+    padding-top: 3.5rem;
+  }
+
+  .page--docs .markdown-section {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .page--docs body.close .sidebar-toggle {
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page--docs #app:empty::before {
+    animation: none;
+  }
+}
