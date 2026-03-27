@@ -15,7 +15,7 @@
   --text: var(--kifiya-dark);
   --text-muted: rgba(10, 26, 31, 0.72);
   --radius-md: 12px;
-  --header-float-radius: 22px;
+  --header-float-radius: 16px;
   --shadow-soft: 0 20px 48px -16px rgba(2, 64, 79, 0.28);
   --shadow-phone: 0 28px 56px -16px rgba(10, 26, 31, 0.4);
   --shadow-header-float: 0 4px 28px -6px rgba(2, 64, 79, 0.45),
@@ -259,7 +259,7 @@ body {
   .header__inner {
     min-height: 58px;
     padding: 12px 22px;
-    border-radius: calc(var(--header-float-radius) + 2px);
+    border-radius: calc(var(--header-float-radius) + 1px);
   }
 
   .header__logo {
