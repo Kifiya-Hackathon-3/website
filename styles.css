@@ -75,8 +75,8 @@ body {
 
 .header__inner {
   width: 100%;
-  max-width: 60rem;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
