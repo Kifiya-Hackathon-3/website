@@ -222,6 +222,77 @@
   margin: 2px 0;
 }
 
+/* Nested sidebar sections (Docsify: e.g. * **Ahadu API** with child links) */
+.page--docs .sidebar .sidebar-nav li:has(> ul) {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.page--docs .sidebar .sidebar-nav li:has(> ul) > p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  padding: 0.5rem 0.65rem 0.4rem 1.85rem;
+  position: relative;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 8px;
+}
+
+.page--docs .sidebar .sidebar-nav li:has(> ul) > p:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.page--docs .sidebar .sidebar-nav li:has(> ul) > p::before {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  top: 50%;
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-top: -0.18rem;
+  border-right: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  transform: rotate(-45deg);
+  transition: transform 0.2s ease;
+}
+
+.page--docs .sidebar .sidebar-nav li.active:has(> ul) > p::before {
+  transform: rotate(45deg);
+  margin-top: -0.22rem;
+}
+
+.page--docs .sidebar .sidebar-nav li:has(> ul) > p::after {
+  content: "Submenu";
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kifiya-secondary, #eb7d23);
+  border: 1px solid rgba(235, 125, 35, 0.5);
+  border-radius: 4px;
+  padding: 3px 7px;
+  line-height: 1;
+}
+
+.page--docs .sidebar .sidebar-nav li:has(> ul) > p strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page--docs .sidebar .sidebar-nav li:has(> ul) > p::before {
+    transition: none;
+  }
+}
+
 .page--docs .sidebar ul li a {
   font-family: var(--font-body);
   font-size: 0.875rem;
