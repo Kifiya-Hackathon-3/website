@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#02404F" />
   <meta name="description" content="Developer documentation for the Kifiya digital identity wallet." />
@@ -60,6 +61,16 @@
 
   <script>
     document.getElementById("y-docs").textContent = new Date().getFullYear();
+
+    /* GitHub Pages: Jekyll hides _sidebar.md unless .nojekyll exists at site root.
+       Project pages live under /repo-name/... so relative "docs/" 404s; derive from URL. */
+    (function () {
+      var path = location.pathname || "/";
+      var last = path.lastIndexOf("/");
+      var dir = last <= 0 ? "/" : path.slice(0, last + 1);
+      window.__DOCSIFY_BASE__ = dir + "docs/";
+    })();
+
     window.$docsify = {
       name: "Developer documentation",
       nameLink: "#/",
@@ -69,7 +80,7 @@
       subMaxLevel: 3,
       auto2top: true,
       routerMode: "hash",
-      basePath: "docs/",
+      basePath: window.__DOCSIFY_BASE__,
       homepage: "README.md",
       notFoundPage: true,
       search: {
